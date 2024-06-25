@@ -21,12 +21,13 @@ namespace ProjetoComposição.Entites
 
         }
 
-        public Funcionario(string nome, NivelFuncionario nivel, double baseSalario, Departamento departamento)
+        public Funcionario(Departamento departamento, string nome, NivelFuncionario nivel, double baseSalario)
         {
+            Departamento = departamento;
             Nome = nome;
             Nivel = nivel;
             BaseSalario = baseSalario;
-            Departamento = departamento;
+           
         }
         public void AdicionarContratos(HorasContrato contrato)
         {
@@ -38,7 +39,7 @@ namespace ProjetoComposição.Entites
         }
         public double Ganho(int ano, int mes)
         {
-            double sum = BaseSalario;
+            double sum = 0;
             foreach (HorasContrato c in Contratos)
             {
                 if (c.Data.Year == ano && c.Data.Month == mes)
@@ -48,7 +49,7 @@ namespace ProjetoComposição.Entites
                 
             }
             return sum;
-
+            
             }
         }
     }
